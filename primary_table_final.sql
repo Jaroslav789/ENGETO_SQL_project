@@ -28,3 +28,10 @@ LEFT JOIN czechia_payroll_value_type cpvt
 WHERE 
 	cp.value_type_code = 5958
 GROUP BY average_gross_wage, industry_branch_name;
+
+CREATE OR REPLACE TABLE t_jaroslav_snajdar_cp_cpc
+SELECT *
+FROM czechia_price cp 
+LEFT JOIN czechia_price_category cpc  
+	ON cpc.code = cp.category_code;
+	
