@@ -35,3 +35,10 @@ FROM czechia_price cp
 LEFT JOIN czechia_price_category cpc  
 	ON cpc.code = cp.category_code;
 	
+CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_primary_2 AS 
+SELECT
+	name,
+	YEAR(date_from) AS year_of_entry,
+	ROUND(AVG(value), 2) AS average_price
+FROM t_jaroslav_snajdar_cp_cpc tjscc 
+GROUP BY name, year_of_entry;
