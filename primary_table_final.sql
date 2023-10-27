@@ -42,3 +42,13 @@ SELECT
 	ROUND(AVG(value), 2) AS average_price
 FROM t_jaroslav_snajdar_cp_cpc tjscc 
 GROUP BY name, year_of_entry;
+
+CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_primary_final AS
+SELECT 
+	tjspsp.*,
+	tjspsp2.name,
+	tjspsp2.average_price
+FROM t_jaroslav_snajdar_project_SQL_primary_1 tjspsp 
+LEFT JOIN t_jaroslav_snajdar_project_SQL_primary_2 tjspsp2 
+   ON tjspsp2.year_of_entry = tjspsp.payroll_year
+WHERE industry_branch_name IS NOT NULL;
