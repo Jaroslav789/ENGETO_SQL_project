@@ -17,3 +17,10 @@ SELECT
 FROM t_jaroslav_snajdar_task_3 tjst
 WHERE payroll_year IN ('2006', '2018')
 ORDER BY name, payroll_year;
+
+SELECT 
+	name, 
+	different_percen 
+FROM t_jaroslav_snajdar_task_3_2 tjst
+WHERE different_percen IS NOT NULL
+ORDER BY different_percen ASC;
