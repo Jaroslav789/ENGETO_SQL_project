@@ -19,3 +19,14 @@ SELECT
 FROM czechia_price cp
 GROUP BY year_of_entry
 ORDER BY year_of_entry; 
+
+-- vytvořit tabulku ...secondary_final
+CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_secondary_final
+SELECT 
+	e.country,
+	e.`year`,
+	e.GDP 
+FROM economies e
+WHERE `year` BETWEEN 2006 AND 2018
+ORDER BY e.country, `year`;
+
