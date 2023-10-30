@@ -14,3 +14,7 @@ SELECT
 FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
 WHERE payroll_year BETWEEN 2006 AND 2018
 GROUP BY payroll_year;
+
+SELECT *
+FROM t_jaroslav_snajdar_task_4 tjst
+WHERE price_wage_different >= 10;
