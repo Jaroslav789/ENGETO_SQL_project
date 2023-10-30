@@ -26,5 +26,10 @@ GROUP BY payroll_year, name
 ORDER BY payroll_year ASC  
 LIMIT 2;
 
-
+SELECT 
+	payroll_year,
+	wage_avg, 
+	SUM(average_price),
+	ROUND( wage_avg / SUM(average_price), 2) AS buy_times 
+FROM t_jaroslav_snajdar_task_2_first;
 
