@@ -12,3 +12,10 @@ FROM czechia_payroll cp;
 
 SELECT *
 FROM czechia_payroll cp;
+
+SELECT 
+	AVG(value),
+	YEAR(date_from) AS year_of_entry
+FROM czechia_price cp
+GROUP BY year_of_entry
+ORDER BY year_of_entry; 
