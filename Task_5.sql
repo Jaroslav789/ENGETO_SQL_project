@@ -17,3 +17,13 @@ LEFT JOIN t_jaroslav_snajdar_project_SQL_primary_final tjspspf
 WHERE country = 'Czech Republic' 
 GROUP BY tjspssf.`year`
 ORDER BY tjspssf.`year`;
+
+SELECT 
+	`year`,
+	gdp,
+	average_gross_wage AS wage,
+	average_price AS price,
+	different_GDP_percen AS GDP_p,
+	different_WAGE_percen AS WAGE_p,
+	different_PRICE_percen AS PRICE_p
+FROM t_jaroslav_snajdar_task_5 tjst;
