@@ -27,3 +27,27 @@ SELECT
 	different_WAGE_percen AS WAGE_p,
 	different_PRICE_percen AS PRICE_p
 FROM t_jaroslav_snajdar_task_5 tjst;
+
+SELECT 
+	`year`,
+--	different_GDP_percen AS GDP_p,
+--	different_WAGE_percen AS WAGE_p,
+--	different_PRICE_percen AS PRICE_p,
+	CASE
+        WHEN  different_GDP_percen > 2 AND different_WAGE_percen > 2 THEN 'roste'
+        ELSE ''
+    END AS wage_this_year,
+    CASE
+        WHEN  different_GDP_percen > 2 AND different_PRICE_percen > 2 THEN 'roste'
+        ELSE ''
+    END AS price_this_year,
+	CASE 
+    	WHEN different_GDP_percen > 2 AND LAG(tjst.different_WAGE_percen,-1) OVER(ORDER BY tjst.`year`) > 2 THEN 'roste'
+    	ELSE ''
+    END AS wage_next_year,
+    CASE 
+    	WHEN different_GDP_percen > 2 AND LAG(tjst.different_PRICE_percen,-1) OVER(ORDER BY tjst.`year`) > 2 THEN 'roste'
+    	ELSE ''
+    END AS price_next_year
+FROM t_jaroslav_snajdar_task_5 tjst
+WHERE different_GDP_percen IS NOT NULL; 
