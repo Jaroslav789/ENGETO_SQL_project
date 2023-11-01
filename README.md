@@ -19,3 +19,7 @@ V rámci úkolu číslo tří, jsem si připravil pomocnou tabulku, kde mám pr�
 Úkol číslo 4.
 
 V rámci úkolu číslo čtyři jsem si vytvořil pomocnou tabulku, kde jsem vypočítal procentuální změnu průměrných cen, kterou jsem odečetl od procentuální změny průměrných mezd v jednotlivých letech. Následně jsem zobrazil jen ty roky, kdy byl rozdíl větší, než 10 % a to bylo jen v roce 2012. 
+
+Tvorba tabulky – secondary_table_final
+Při tvorbě tabulky secondary_table_final jsem si společné roky tabulek czechia_price a czechia_payroll a podle toho jsem si vygeneroval secondary_table_final, kde jsem vybral jen data, která budu potřebovat pro úkol číslo 5. Spojování dalších potřebných dat jako jsou mzdy a ceny jsem udělal, až v rámci úkolu číslo pět. 
+
