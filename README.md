@@ -16,3 +16,6 @@ Tento úkol jsem si rozdělil na dvě části, nejprve jsem hledal první srovna
 
 V rámci úkolu číslo tří, jsem si připravil pomocnou tabulku, kde mám průměrné roční ceny jednotlivých potravin. Následně jsem vybral jen první a poslední sledovaný rok, kde jsem si vypočítal procentní změny. V poslední části jsem vygeneroval tabulku, kde jde vidět procentní změní mezi prvním a posledním sledovaným rokem. Tyto data jsou seřazená od nejmenších procentních změn po největší. Nejpomalejší růst, nebo spíš pokles je u cukru krystalu, který je levnější o 27,52 %. 
 
+Úkol číslo 4.
+
+V rámci úkolu číslo čtyři jsem si vytvořil pomocnou tabulku, kde jsem vypočítal procentuální změnu průměrných cen, kterou jsem odečetl od procentuální změny průměrných mezd v jednotlivých letech. Následně jsem zobrazil jen ty roky, kdy byl rozdíl větší, než 10 % a to bylo jen v roce 2012. 
