@@ -12,4 +12,7 @@ Pro úkol číslo jedna jsem si vytvořil pomocnou tabulku, kde jsem si vybral j
 
 Tento úkol jsem si rozdělil na dvě části, nejprve jsem hledal první srovnatelné období, kde jsem si vytvořil pomocnou tabulku s rokem 2006, průměrnou mzdou. Spočítal jsem si průměrnou cenu chleba a mléka pro tento rok. Dále jsem vydělil součet těchto průměrných cen průměrnou mzdou za sledované období a zjistil jsem, že je možné si koupit 679 litu mléka a kila chleba za průměrnou mzdu. U posledního srovnatelného období, které bylo v roce 2018, jsem postupoval stejným způsobem, jen jsem vybíral poslední záznamy. V tomto případě je možné si koupit 742 litrů mléka a kila chleba, za průměrnou mzdu v roce 2018. 
 
+Úkol číslo 3.
+
+V rámci úkolu číslo tří, jsem si připravil pomocnou tabulku, kde mám průměrné roční ceny jednotlivých potravin. Následně jsem vybral jen první a poslední sledovaný rok, kde jsem si vypočítal procentní změny. V poslední části jsem vygeneroval tabulku, kde jde vidět procentní změní mezi prvním a posledním sledovaným rokem. Tyto data jsou seřazená od nejmenších procentních změn po největší. Nejpomalejší růst, nebo spíš pokles je u cukru krystalu, který je levnější o 27,52 %. 
 
