@@ -26,4 +26,3 @@ Při tvorbě tabulky secondary_table_final jsem si společné roky tabulek czech
 ### Úkol číslo 5.
 
 V posledním úkolu jsem si spojil secondary_table_final s potřebnými daty z tabulky primary_table_final (mzdy a ceny v jednotlivých letech), také jsem si vypočítal procentní změny HDP, mezd a cen. V posledním kroku jsem zobrazil tabulku, kde je zaznamenané kdy roste HDP a mzdy, HDP a ceny ve stejném roce. Taky je zobrazené, když roste HDP v aktuálním roce a mzdy v následujícím roce a také kdy roste HDP v aktuálním roce a ceny v následujícím roce. Růst u všech zmíněných hodnot je považován, pokud je procentní růst větší než 2 %. 
-
