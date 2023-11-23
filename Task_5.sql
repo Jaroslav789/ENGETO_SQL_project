@@ -30,9 +30,6 @@ FROM t_jaroslav_snajdar_task_5 tjst;
 
 SELECT 
 	`year`,
---	different_GDP_percen AS GDP_p,
---	different_WAGE_percen AS WAGE_p,
---	different_PRICE_percen AS PRICE_p,
 	CASE
         WHEN  different_GDP_percen > 2 AND different_WAGE_percen > 2 THEN 'roste'
         ELSE ''
