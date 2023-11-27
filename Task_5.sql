@@ -14,7 +14,7 @@ SELECT
 FROM t_jaroslav_snajdar_project_SQL_secondary_final tjspssf
 LEFT JOIN t_jaroslav_snajdar_project_SQL_primary_final tjspspf 
 	 ON tjspspf.payroll_year = tjspssf.`year` 
-WHERE country = 'Czech Republic' 
+WHERE average_gross_wage IS NOT NULL AND country = 'Czech Republic'	 
 GROUP BY tjspssf.`year`
 ORDER BY tjspssf.`year`;
 
