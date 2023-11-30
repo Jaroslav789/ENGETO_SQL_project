@@ -2,15 +2,15 @@
 
 ## Tvorba tabulky - primary_table_final
 
-Tabulku jsem vytvářel postupně pomocí příkazů join. Nejprve jsem si vytvořil pomocnou tabulku, kde jsem spojil hlavní tabulku czechia_payroll se všemi pod tabulkami (calculation, industry_branch, unit, value_type). Dále jsem vytvořil druhou pomocnou tabulku spojením czechia_price s pomocnou tabulkou (category). Ve druhé pomocné tabulce jsem si vypočítal průměry, abych zmenšil počet záznamů a převedl datum (date_from) na roky. Následně jsem tyto dvě pomocné tabulky spojil na základě společných roků. Veškeré spojování jsem prováděl příkazem "LEFT JOIN". 
+Tabulku jsem vytvářel postupně pomocí příkazů join. Nejprve jsem si vytvořil pomocnou tabulku, kde jsem spojil hlavní tabulku czechia_payroll se všemi pod tabulkami (calculation, industry_branch, unit, value_type). Dále jsem vytvořil druhou pomocnou tabulku spojením czechia_price s pomocnou tabulkou (category). Ve druhé pomocné tabulce jsem si vypočítal průměr cen potravin, abych zmenšil počet záznamů a převedl datum (date_from) na roky. Následně jsem tyto dvě pomocné tabulky spojil na základě společných roků. Veškeré spojování jsem prováděl příkazem "LEFT JOIN". 
 
 ### Úkol číslo 1.
 
-Pro úkol číslo jedna jsem si vytvořil pomocnou tabulku, kde jsem si vybral jen potřebné údaje, omezil jsem roky jen na první a poslední rok ve sledovaném období, abych mohl tyto dva roky porovnat a zjistit, jestli se v posledním sledovaném roce zvýšila mzda v jednotlivém odvětví od prvního sledovaného roku. Ve výsledcích vidíme profese seřazené abecedně, rozdíl ve mzdách (rok 2000 a 2021) a výsledek zjištění. Pokud mzdy rostly vidíme zápis „Roste“ pokud nerostly vidíme zápis „Klesá“. V zemědělství, lesnictví, rybaření mzdy klesly, v ostatních odvětvích mzdy stoupaly. 
+V ukolu číslo jedna, jsem si vypočítal prúměrné mzdy za jednotlivé roky a profeze za první sledované období (rok 2000) a poslední sledované období (rok 2021) a tyto období jsem od sebe odečetl. U vešch sledovaných profesí mzdy rostly a byly v roce 2021 větší, než v roce 2000), tento růst je ve sloupci "grow".
 
 ### Úkol číslo 2.
 
-Tento úkol jsem si rozdělil na dvě části, nejprve jsem hledal první srovnatelné období, kde jsem si vytvořil pomocnou tabulku s rokem 2006, průměrnou mzdou. Spočítal jsem si průměrnou cenu chleba a mléka pro tento rok. Dále jsem vydělil součet těchto průměrných cen průměrnou mzdou za sledované období a zjistil jsem, že je možné si koupit 620 litu mléka a kila chleba za průměrnou mzdu. U posledního srovnatelného období, které bylo v roce 2018, jsem postupoval stejným způsobem, jen jsem vybíral poslední záznamy. V tomto případě je možné si koupit 678 litrů mléka a kila chleba, za průměrnou mzdu v roce 2018. 
+V rámci ukolu čílso dva, jsem vypočítal průměrné ceny a mzdy v prvním a posledním seldovaném odbobím. Jedná se o roky 2006 a 2018. Dále jsem sečetl průměrné ceny pvybraných potravin v jednotlivých letech a vyděli jsem je průměrnými mzdami ve seldovaných letech. V roce 2006 si můžeme za průměrnou mzdu koupit 677 litrů mláka a kila chleba. V roce 2018 to je 737 litrů mléka a kilo chleba. 
 
 ### Úkol číslo 3.
 
