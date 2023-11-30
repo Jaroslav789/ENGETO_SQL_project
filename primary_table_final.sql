@@ -26,8 +26,7 @@ LEFT JOIN czechia_payroll_unit cpu
 LEFT JOIN czechia_payroll_value_type cpvt 
 	ON cpvt.code = cp.value_type_code;
 WHERE 
-	cp.value_type_code = 5958
-GROUP BY payroll_year, industry_branch_name;
+	cp.value_type_code = 5958;
 
 CREATE OR REPLACE TABLE t_jaroslav_snajdar_cp_cpc
 SELECT *
@@ -39,15 +38,16 @@ CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_primary_2 AS
 SELECT
 	name,
 	YEAR(date_from) AS year_of_entry,
-	ROUND(AVG(value), 2) AS average_price
+	AVG(value), 2) AS price
 FROM t_jaroslav_snajdar_cp_cpc tjscc 
-GROUP BY name, year_of_entry;
+GROUP BY year_of_entry;
 
 CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_primary_final AS
 SELECT 
 	tjspsp.*,
 	tjspsp2.name,
-	tjspsp2.average_price
+	tjspsp2.price
 FROM t_jaroslav_snajdar_project_SQL_primary_1 tjspsp 
 LEFT JOIN t_jaroslav_snajdar_project_SQL_primary_2 tjspsp2 
-   ON tjspsp2.year_of_entry = tjspsp.payroll_year;
+   ON tjspsp2.year_of_entry = tjspsp.payroll_year
+   WHERE industry_branch_name IS NOT NULL;
