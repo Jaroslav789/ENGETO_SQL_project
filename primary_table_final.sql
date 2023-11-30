@@ -1,5 +1,3 @@
-DROP TABLE t_jaroslav_snajdar_project_SQL_primary_final;
-
 CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_primary_1 AS 
 SELECT 
 	cp.value AS average_gross_wage,	
@@ -24,7 +22,7 @@ LEFT JOIN czechia_payroll_industry_branch cpib
 LEFT JOIN czechia_payroll_unit cpu 
 	ON cpu.code = cp.unit_code 
 LEFT JOIN czechia_payroll_value_type cpvt 
-	ON cpvt.code = cp.value_type_code;
+	ON cpvt.code = cp.value_type_code
 WHERE 
 	cp.value_type_code = 5958;
 
@@ -38,9 +36,9 @@ CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_primary_2 AS
 SELECT
 	name,
 	YEAR(date_from) AS year_of_entry,
-	AVG(value), 2) AS price
-FROM t_jaroslav_snajdar_cp_cpc tjscc 
-GROUP BY year_of_entry;
+	AVG(value) AS price
+FROM t_jaroslav_snajdar_cp_cpc tjscc
+GROUP BY year_of_entry, name;
 
 CREATE OR REPLACE TABLE t_jaroslav_snajdar_project_SQL_primary_final AS
 SELECT 
@@ -49,5 +47,5 @@ SELECT
 	tjspsp2.price
 FROM t_jaroslav_snajdar_project_SQL_primary_1 tjspsp 
 LEFT JOIN t_jaroslav_snajdar_project_SQL_primary_2 tjspsp2 
-   ON tjspsp2.year_of_entry = tjspsp.payroll_year
-   WHERE industry_branch_name IS NOT NULL;
+   ON tjspsp2.year_of_entry = tjspsp.payroll_year;
+WHERE industry_branch_name IS NOT NULL;
