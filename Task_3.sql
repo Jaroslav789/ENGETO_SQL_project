@@ -20,7 +20,8 @@ SELECT
 	*, 
 	LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year) AS previous,
 	price - LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year) AS different,
-	ROUND(((price - LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year)) / (LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year)) * 100), 2) AS different_percen
+	ROUND(((price - LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year)) / (LAG(price,1) 
+	OVER(PARTITION BY name ORDER BY payroll_year)) * 100), 2) AS different_percen
 FROM t_jaroslav_snajdar_task_3 tjst
 WHERE payroll_year IN ('2006', '2018')
 ORDER BY name, payroll_year;	
