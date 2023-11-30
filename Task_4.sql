@@ -1,21 +1,31 @@
+WITH a AS (
 SELECT 
 	payroll_year,
-	average_gross_wage,
-	industry_branch_name,
-	name,
-	average_price 
+	ROUND(AVG(average_gross_wage), 2) AS wage,
+	ROUND(AVG(price), 2) AS price
 FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
-GROUP BY payroll_year;
-
-CREATE OR REPLACE TABLE t_jaroslav_snajdar_task_4
+WHERE payroll_year BETWEEN 2006 AND 2018
+GROUP BY payroll_year
+),
+b AS (
 SELECT 
+	*,
+	LAG(wage,1) OVER(ORDER BY payroll_year) AS p_wage,
+	LAG(price,1) OVER(ORDER BY payroll_year) AS p_price
+FROM a
+),	
+c AS (
+SELECT 
+	*,	
+	ROUND(((wage - p_wage) / p_wage), 4) * 100 AS wage_p, 
+	ROUND(((price - p_price) / p_price), 4) * 100 AS price_p
+FROM b
+)
+SELECT
 	payroll_year,
-	ROUND(((average_price - LAG(average_price,1) OVER(PARTITION BY name ORDER BY payroll_year)) / (LAG(average_price,1) OVER(PARTITION BY name ORDER BY payroll_year)) * 100), 2)
-	- ROUND(((average_gross_wage - LAG(average_gross_wage,1) OVER(PARTITION BY name ORDER BY payroll_year)) / (LAG(average_gross_wage,1) OVER(PARTITION BY name ORDER BY payroll_year)) * 100), 2) AS price_wage_different
-FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
-WHERE average_gross_wage IS NOT NULL 
-GROUP BY payroll_year;
-
-SELECT *
-FROM t_jaroslav_snajdar_task_4 tjst
-WHERE price_wage_different >= 10;
+	wage,
+	price,
+	wage_p,
+	price_p,
+	wage_p - price_p AS different_p
+FROM c;
