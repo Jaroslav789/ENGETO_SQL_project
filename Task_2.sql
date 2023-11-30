@@ -1,64 +1,25 @@
-SELECT *,
-	name 
-FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf 
-GROUP BY name;
-
-SELECT 
-	payroll_year, 
-	name, 
-	average_price,
-	ROUND(AVG(average_gross_wage), 2) AS wage_avg
-FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
-WHERE name IN ('Mléko polotučné pasterované', 'Chléb konzumní kmínový')
-GROUP BY payroll_year, name
-ORDER BY payroll_year ASC 
-LIMIT 2;
-
-CREATE OR REPLACE TABLE t_jaroslav_snajdar_task_2_first
-SELECT 
-	payroll_year, 
-	name, 
-	average_price, 
-	ROUND(AVG(average_gross_wage), 2) AS wage_avg
-FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
-WHERE name IN ('Mléko polotučné pasterované', 'Chléb konzumní kmínový')
-GROUP BY payroll_year, name
-ORDER BY payroll_year ASC  
-LIMIT 2;
-
+WITH a AS (
 SELECT 
 	payroll_year,
-	wage_avg, 
-	SUM(average_price),
-	ROUND( wage_avg / SUM(average_price), 2) AS buy_times 
-FROM t_jaroslav_snajdar_task_2_first;
-
-SELECT 
-	payroll_year, 
-	name, 
-	average_price,
-	ROUND(AVG(average_gross_wage), 2) AS wage_avg
+	AVG (average_gross_wage) AS wage,
+	name,
+	price AS milk
 FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
 WHERE name IN ('Mléko polotučné pasterované', 'Chléb konzumní kmínový')
 GROUP BY payroll_year, name
-ORDER BY payroll_year DESC
-LIMIT 2;
-
-CREATE OR REPLACE TABLE t_jaroslav_snajdar_task_2_last
+HAVING payroll_year = 2006 OR payroll_year = 2018
+ORDER BY payroll_year, name
+),
+b AS (
 SELECT 
-	payroll_year, 
-	name, 
-	average_price, 
-	ROUND(AVG(average_gross_wage), 2) AS wage_avg
-FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
-WHERE name IN ('Mléko polotučné pasterované', 'Chléb konzumní kmínový')
-GROUP BY payroll_year, name
-ORDER BY payroll_year DESC 
-LIMIT 2;
-
+	*,
+	LAG(milk,2) OVER (ORDER BY name, payroll_year) AS bread
+FROM a  
+)
 SELECT 
 	payroll_year,
-	wage_avg, 
-	SUM(average_price),
-	ROUND( wage_avg / SUM(average_price), 2) AS buy_times 
-FROM t_jaroslav_snajdar_task_2_last tjstl;
+	wage,
+	ROUND(milk + bread, 2) AS mil_bread,
+	ROUND(wage / (milk + bread), 0) AS buy_times
+FROM b
+WHERE bread IS NOT NULL;
