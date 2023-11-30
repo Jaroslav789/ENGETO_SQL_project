@@ -2,21 +2,28 @@ CREATE OR REPLACE TABLE t_jaroslav_snajdar_task_3
 SELECT 
 	payroll_year,
 	name,
-	average_price 
+	price 
 FROM t_jaroslav_snajdar_project_SQL_primary_final tjspspf
 WHERE name IS NOT NULL 
 GROUP BY payroll_year, name
 ORDER BY name, payroll_year; 
 
+SELECT 
+	payroll_year,
+	name,
+	price,
+	LAG(price) OVER(ORDER BY name, payroll_year) AS previous
+FROM t_jaroslav_snajdar_task_3 tjst;
+
 CREATE OR REPLACE TABLE t_jaroslav_snajdar_task_3_2  
 SELECT 
 	*, 
-	LAG(average_price,1) OVER(PARTITION BY name ORDER BY payroll_year) AS previous,
-	average_price - LAG(average_price,1) OVER(PARTITION BY name ORDER BY payroll_year) AS different,
-	ROUND(((average_price - LAG(average_price,1) OVER(PARTITION BY name ORDER BY payroll_year)) / (LAG(average_price,1) OVER(PARTITION BY name ORDER BY payroll_year)) * 100), 2) AS different_percen
+	LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year) AS previous,
+	price - LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year) AS different,
+	ROUND(((price - LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year)) / (LAG(price,1) OVER(PARTITION BY name ORDER BY payroll_year)) * 100), 2) AS different_percen
 FROM t_jaroslav_snajdar_task_3 tjst
 WHERE payroll_year IN ('2006', '2018')
-ORDER BY name, payroll_year;
+ORDER BY name, payroll_year;	
 
 SELECT 
 	name, 
